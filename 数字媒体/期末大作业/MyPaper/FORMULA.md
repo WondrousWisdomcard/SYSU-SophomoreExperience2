@@ -27,5 +27,5 @@ $$
 
 
 $$
-Img_{result} = Img_{dst} \cdot \frac{Blur_{src}}{Blur_{dst}} 
+Img_{result} = Img_{dst} \cdot \frac{Blur_{src}}{Blur_{dst}}
 $$
