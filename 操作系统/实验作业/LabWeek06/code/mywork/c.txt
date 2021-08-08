@@ -1,0 +1,4 @@
+gcc -o shmread.o shmread.c
+gcc -o shmwrite.o shmwrite.c
+gcc shmcon.c
+./a.out ../../area

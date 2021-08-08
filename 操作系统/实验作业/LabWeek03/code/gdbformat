@@ -1,0 +1,8 @@
+as --32 -o sse2float.o sse2float.s
+	ld -m elf_i386 -dynamic-linker /lib/ld-linux.so.2 -o sse2float -lc sse2float.o
+	./sse2float
+	
+gdb sse2float
+break *_start+1
+run
+

@@ -1,0 +1,12 @@
+
+gcc -o pmsgrcv.o pmsgrcv.c -lrt
+gcc -o pmsgsnd.o pmsgsnd.c -lrt
+gcc pmsgcon.c -lrt
+./a.out /tmp
+
+
+gcc -o r.out pmsgrcv.c -lrt
+./r.out /tmp
+
+gcc -o s.out pmsgsnd.c -lrt
+./s.out /tmp

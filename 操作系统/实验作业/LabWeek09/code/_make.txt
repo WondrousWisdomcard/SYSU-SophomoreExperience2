@@ -1,0 +1,14 @@
+cd Desktop/oshomework/LabWeek09/code
+
+gcc -o server.out alg.11-5-socket-server-BBS-3-nickname.c
+./server.out /tmp/test
+
+gcc -o input.out alg.11-3-socket-input-2.c
+./input.out /tmp/test
+
+gcc -o connect.out alg.11-4-socket-connector-BBS-2.c
+./connect.out /tmp/test1
+./input.out /tmp/test1
+
+./connect.out /tmp/test2
+./input.out /tmp/test2

@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <semaphore.h>
+
+#ifndef SCHEDULER
+#define SCHEDULER
+
+#define RUNNING 1
+#define READY 0
+#define BLOCK -1
+#define END -2
+
+#define FCFS 333
+#define SJF 444
+#define PRIO 555
+
+#define P 9
+#define NP 8
+#define SIG 50
+#define TIMELIMIT 10000000
+
+long gettime(struct timeval ts, struct timeval te);
+
+typedef struct ctl_node{
+	int id;
+	pthread_t ptid;
+	struct timeval arrive_time; 
+	struct timeval finish_time; 
+	int worst_time;
+	int rest_time;
+	int re_sleep;
+	int priority; // 0 the highest
+	int state;
+	struct ctl_node* next;
+	sem_t start_sem; 
+	sem_t finish_sem; 
+}ctl_node; 
+
+// control node operate
+struct ctl_node* ctl_node_create(int id, int wct, int prio);
+void ctl_node_show(struct ctl_node* cn);
+void ctl_node_release(struct ctl_node* cn);
+
+typedef struct scheduler{
+	int mode; // np or p
+	int mode_2; // fcfs or sjf or prio
+	//running node
+	struct ctl_node* running_node;
+	
+	//ready queue
+	struct ctl_node* ready_head;
+	struct ctl_node* ready_tail;
+	
+	//last finish
+	struct ctl_node* finish_list;
+	
+	struct timeval init_time;
+	long time_quantum;
+	
+	sem_t enqueue_sem; 
+}scheduler;
+
+// scheduler initialize
+void scheduler_init(struct scheduler* sche, int mode);
+void scheduler_show(struct scheduler* sche);
+void scheduler_free(struct scheduler* sche);
+void scheduler_delete(struct scheduler* sche);
+
+void compute_average_wait_time(struct scheduler* sche);
+
+// enqueue: other state to ready
+// dequeue: ready to other state
+void enqueue(struct scheduler* sche, struct ctl_node* cn, int mode);
+struct ctl_node* dequeue(struct scheduler* sche, int mode);
+
+// scheduler thread function
+void *scheduler_np(void *sche);
+void *scheduler_p(void *sche);
+#endif
+
+
+
+
+
+
