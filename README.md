@@ -6,7 +6,7 @@
 #### 操作系统
 
 * 复习笔记：含期中/期末复习笔记和蔡老师提供的考研题库
-* 实验作业：操作系统每周作业，具体查看 [./操作系统/实验作业/README.md](https://gitee.com/WondrousWisdomcard/sophomore-experience2/blob/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/README.md)
+* 实验作业：操作系统每周作业，具体查看 [./操作系统/实验作业/README.md](https://github.com/WondrousWisdomcard/SYSU-SophomoreExperience2/blob/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/README.md)
 * uCore作业：清华uCore作业 仅完成Lab01和Lab02
 
 #### 计算机网络
